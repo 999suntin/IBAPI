@@ -1,25 +1,26 @@
 import yfinance as yf
 import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
 
 # Define the ticker symbols for Tesla and Apple
-tesla_ticker = "TSLA"
-apple_ticker = "APPL"
+tesla_symbol = "TSLA"
+apple_symbol = "AAPL"
 
-# Fetch historical data for Tesla
-tesla_data = yf.Ticker(tesla_ticker)
-tesla_history = tesla_data.history(period="max")
+# Set the start and end dates for the historical data (format: "YYYY-MM-DD")
+start_date = "2022-01-01"
+end_date = "2023-01-01"
 
-# Fetch historical data for Apple
-apple_data = yf.Ticker(apple_ticker)
-apple_history = apple_data.history(period="max")
+# Get historical data for Tesla
+tesla_data = yf.download(tesla_symbol, start=start_date, end=end_date)
 
-# Calculate correlation matrix
-correlation_matrix = pd.concat([tesla_history['Close'], apple_history['Close']], axis=1).corr()
+# Get historical data for Apple
+apple_data = yf.download(apple_symbol, start=start_date, end=end_date)
 
-# Create a heatmap
-plt.figure(figsize=(8, 6))
-sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', fmt=".2f", linewidths=.5)
-plt.title('Correlation Heatmap between Tesla and Apple Stock Prices')
-plt.show()
+# Print the historical data for Tesla and Apple
+print("Tesla Stock Data:")
+print(tesla_data.head())  # Print the first 5 rows of Tesla data
+print("\nApple Stock Data:")
+print(apple_data.head())  # Print the first 5 rows of Apple data
+
+# Optionally, you can save the data to a CSV file
+tesla_data.to_csv("tesla_stock_data.csv")
+apple_data.to_csv("apple_stock_data.csv")
