@@ -1,0 +1,18 @@
+{
+  "name": "episode6",
+  "version": "9.8.1",
+  "description": "test",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "s"
+  ],
+  "author": "suntinhk",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "lodash": "^4.17.21"
+  }
+}

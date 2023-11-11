@@ -1,0 +1,11 @@
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[user]
+	name = 999suntin
+	email = 141107562+999suntin@users.noreply.github.com
+	mail = suntinhk@gmail.com
+[init]
+	defaultBranch = master
